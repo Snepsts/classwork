@@ -14,17 +14,17 @@
 using namespace std;
 
 bool stack::Empty()
-{
+{ //Task: To return true/false based on whether or not the stack is empty
 	return v.empty();
 }
 
 void stack::Push(StackType item)
-{
+{ //Task: To add "StackType item" to top of stack
 	v.push_back(item);
 }
 
 void stack::Pop()
-{
+{ //Task: Remove top item from stack
 	if (!v.empty())
 	{
 		v.pop_back();
@@ -36,7 +36,7 @@ void stack::Pop()
 }
 
 StackType stack::Top()
-{
+{ //Task: Return the item that's on the top
 	if (!v.empty())
 	{
 		return v.back();
@@ -49,7 +49,7 @@ StackType stack::Top()
 }
 
 ostream& operator<<(ostream& out, stack s)
-{
+{ //Task: Simplify output in main
 	out << s.Top();
 	return out;
 }
