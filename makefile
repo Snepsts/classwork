@@ -7,7 +7,7 @@ LFLAGS = -Wall $(DEBUG)
 object : $(OBJS)
 	$(CC) $(LFLAGS) $(OBJS) -o object.out
 
-main.o : main.o (all included header files)
+main.o : main.cpp (all included header files)
 	$(CC) $(CFLAGS) main.cpp
 
 class.o : class.cpp class.h
