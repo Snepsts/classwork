@@ -235,3 +235,87 @@ void Queue::addtofront(QueueType element)
 
 	return s;
 }
+
+arrayclass.h:
+/*
+	Author: Michael Ranciglio
+	Location: Southeast Missouri State University
+	Class: Computer Science II (CS 265-01) (21141)
+	Date: 3/22/16
+	Data Type: arrayclass, a class storing an array of element Template T
+*/
+
+#ifndef __ARRAYCLASS_H__
+#define __ARRAYCLASS_H__
+
+#include <iostream>
+
+using namespace std;
+
+const int SIZE = 16;
+
+template <typename T>
+
+class arrayclass
+{
+public:
+	arrayclass()
+	{
+		for (int i = 0; i < SIZE; i++)
+		{
+			m_array[i] = NULL;
+		}
+
+		m_size = 0;
+	}
+
+	int size()
+	{
+		return m_size;
+	}
+
+	void add(int a)
+	{
+		if (m_array[a] == NULL)
+			m_size++;
+		cout << "Type your array entry: ";
+		cin >> m_array[a];
+	}
+
+	void remove(int a)
+	{
+		if (m_array[a] != NULL)
+			m_size--;
+		m_array[a] = NULL;
+	}
+
+	int search(T a)
+	{
+		int r;
+
+		for (int i = 0; i < SIZE; i++)
+		{
+			if (m_array[i] == a)
+			r = i;
+		}
+
+		return r;
+	}
+
+	friend ostream& operator<<(ostream& out, arrayclass a)
+	{
+		for (int i = 0; i < SIZE; i++)
+		{
+			if (m_array[i] != NULL)
+				out << m_array[i] << endl;
+		}
+
+		return out;
+	}
+
+private:
+	T m_array[SIZE];
+	int m_size;
+};
+
+#endif
