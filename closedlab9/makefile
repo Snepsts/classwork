@@ -12,5 +12,3 @@ main.o : main.cpp (all included header files)
 
 class.o : class.cpp class.h
 	$(CC) $(CLFAGS) class.cpp
-
-(This is my copy paste makefile for all my classwork)
