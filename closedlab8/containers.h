@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <streambuf>
 #include <vector>
 #include <deque>
 #include <list>
@@ -66,17 +67,22 @@ public:
 	Receives:
 	Preconditions:
 	Postconditions: */
-	void inputstreamfunction(istringstream ss)
+	void inputstreamfunction(istringstream& ss)
 	{
-		for(typename list<T>::iterator i = lst.begin(); !ss.eof(); i++)
-			ss >> *i;
+		T item;
+		while (ss >> item)
+			lst.push_back(item);
 	}
 
 	/* function
 	Receives:
 	Preconditions:
 	Postconditions: */
-	void vectolist(vector<T> v);
+	void vectolist(vector<T> v)
+	{
+		for (typename vector<T>::iterator i = v.begin(); i != v.end(); i++)
+			lst.push_back(*i);
+	}
 
 	/* function
 	Receives:
@@ -161,15 +167,6 @@ void containers<int>::addfirstsixints(int array[])
 }
 
 template <typename T>
-void containers<T>::vectolist(vector<T> v)
-{
-	typename list<T>::iterator ilst = lst.begin();
-	for (typename vector<T>::iterator i = v.begin(); i != v.end(); i++)
-		*ilst = *i;
-		ilst++;
-}
-
-template <typename T>
 void containers<T>::changelstto(T item, T change)
 {
 	typename list<T>::iterator lstb = lst.begin();
@@ -177,8 +174,8 @@ void containers<T>::changelstto(T item, T change)
 	if(find(lstb, lste, item) != lste)
 	{
 		typename list<T>::iterator location = find(lstb, lste, item);
-		lst.erase(location);
 		lst.insert(location, change);
+		lst.erase(location);
 	}
 	else
 		cerr << "[error]: Function \"changelstto\" failed, the parameter \"item\" (\"" << item << "\" in this case) could not be found in the list." << endl;

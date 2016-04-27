@@ -1,14 +1,11 @@
-OBJS = main.o class.o
+OBJS = closedlab9.o
 CC = g++
 DEBUG = -g
 CFLAGS = -Wall -c $(DEBUG)
 LFLAGS = -Wall $(DEBUG)
 
-object : $(OBJS)
-	$(CC) $(LFLAGS) $(OBJS) -o object.out
+closedlab9 : $(OBJS)
+	$(CC) $(LFLAGS) $(OBJS) -o closedlab9.out
 
-main.o : main.cpp (all included header files)
-	$(CC) $(CFLAGS) main.cpp
-
-class.o : class.cpp class.h
-	$(CC) $(CLFAGS) class.cpp
+closedlab9.o : closedlab9.cpp
+	$(CC) $(CFLAGS) closedlab9.cpp
