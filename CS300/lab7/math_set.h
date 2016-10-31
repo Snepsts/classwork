@@ -1,3 +1,8 @@
+/* Author: Michael Ranciglio
+School: Southeast Missouri State
+Class: Computer Science III
+Date: 9/26/16 */
+
 #include <set>
 
 using std::set;

@@ -1,0 +1,13 @@
+This is a line of text
+This is another line of text
+This is ALL OF THE TEXT
+This is part of the text
+I have some of the text right here
+This is the sixth line
+There is not much text left
+Sometimes there isn't any text at all
+However right now there is still some text
+I hate writing .txt files
+Skip line!
+This is the twelfth line
+This is the last line

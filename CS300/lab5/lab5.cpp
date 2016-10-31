@@ -1,3 +1,8 @@
+/* Author: Michael Ranciglio
+School: Southeast Missouri State
+Class: Computer Science III
+Date: 9/12/16 */
+
 #include <iostream>
 #include <fstream>
 #include <map>
@@ -134,7 +139,7 @@ int main()
 
 		for(vector<int>::iterator vit = q.second.begin(); vit != q.second.end(); vit++){
 			for(int i = 0; i < 20; i++){ //if *vit has already been printed
-										 //this will prevented of being printed again
+										 //this will prevent it of being printed again
 				if(varray[i] == *vit)
 					checker = false;
 			}

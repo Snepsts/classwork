@@ -1,3 +1,8 @@
+/* Author: Michael Ranciglio
+School: Southeast Missouri State
+Class: Computer Science III
+Date: 9/26/16 */
+
 #include <iostream>
 #include "math_set.h"
 
@@ -197,3 +202,56 @@ int main(){
 
 	return 0;
 }
+
+/* Output:
+Union output:
+0 1 2 3 4 5 6 7 8 9 10 11 12
+Intersection output:
+2 4 6 8 10
+Minus output:
+1 3 5 7 9 11
+Symdif output:
+0 1 3 5 7 9 11 12
+
+Union "+ operator" output:
+0 1 2 3 4 5 6 7 8 9 10 11 12
+Intersection "* operator" output:
+2 4 6 8 10
+Minus "- operator" output:
+1 3 5 7 9 11
+Symdif "^ operator" output:
+0 1 3 5 7 9 11 12
+
+c is a subset of a
+d is a subset of a
+c is NOT a proper subset of a
+d is a proper subset of a
+
+1 is in a
+0 is NOT in a
+Union output:
+more stuff, moremore stuff, most stuff, other stuff, some more stuff, some other stuff, some stuff, stuff,
+Intersection output:
+more stuff, stuff,
+Minus output:
+moremore stuff, most stuff, some more stuff,
+Symdif output:
+moremore stuff, most stuff, other stuff, some more stuff, some other stuff, some stuff,
+
+Union "+ operator" output:
+more stuff, moremore stuff, most stuff, other stuff, some more stuff, some other stuff, some stuff, stuff,
+Intersection "* operator" output:
+more stuff, stuff,
+Minus "- operator" output:
+moremore stuff, most stuff, some more stuff,
+Symdif "^ operator" output:
+moremore stuff, most stuff, other stuff, some more stuff, some other stuff, some stuff,
+
+cs is a subset of as
+ds is a subset of as
+cs is NOT a proper subset of as
+ds is a proper subset of as
+
+"stuff" is in as
+"other stuff" is NOT in as
+*/
