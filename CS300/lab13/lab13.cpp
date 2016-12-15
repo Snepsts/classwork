@@ -1,24 +1,18 @@
+/* Author: Michael Ranciglio
+School: Southeast Missouri State
+Class: Computer Science III
+*/
+
 #include <iostream>
 #include <string>
 #include <functional>
 #include <unordered_map>
-
-/* Lab13:
-function object class - take string, return sum of absolute value of character codes
-unordered string, int map with the class as a third parameter
-the constructor needs 2 parameters, the first a suggested # of buckets (use 20)
-the second a function object object of the function object class
-do it all on an unordered_multimap as well
-a) use built-in hash
-b) use built-in hash but specify it when declaring the map.
-c) write a function object which always returns 1 (a bad idea) and use it for the hash.
-
-shortstory.txt
-or each map find the bucket count and for each bucket find the bucket size.
-*/
+#include <vector>
+#include "split.h"
 
 using std::size_t;
 using std::string;
+using std::cout;
 
 struct strhash{
 	size_t operator()(const string& key) const{
@@ -36,19 +30,103 @@ struct strhash2{
 	}
 };
 
-struct strcomp{
-	bool operator()(const string& k1, const string& k2) const{
-		return (k1 == k2);
-	}
-};
-
 int main(int argc, char const *argv[]){
-	std::unordered_map<string, int, strhash, strcomp> m(20, strhash(), strcomp());
-	string word;
+	std::unordered_map<string, int, strhash> m(20, strhash());
+	std::unordered_map<string, int, strhash2> m2(20, strhash2());
+	std::unordered_map<string, int, std::hash<string>> m3(20, std::hash<string>());
 
-	while(std::cin >> word){
-		m.insert(std::make_pair(word, 1));
+	string word, line;
+	std::vector<string> v;
+	int count = 0;
+
+	while(getline(std::cin, line)){
+		count++;
+		v = csplit(line);
+		for(auto q : v){
+			m.insert(std::make_pair(q, count));
+			m2.insert(std::make_pair(q, count));
+			m3.insert(std::make_pair(q, count));
+		}
+	}
+
+	cout << "The first unordered_map has " << m.bucket_count() << " buckets!\n";
+	for(size_t i = 0; i < m.bucket_count(); i++){
+		cout << "Bucket #" << i << " has " << m.bucket_size(i) << " elements.\n";
+	}
+
+	cout << "The second unordered_map has " << m2.bucket_count() << " buckets!\n";
+	for(size_t i = 0; i < m2.bucket_count(); i++){
+		cout << "Bucket #" << i << " has " << m2.bucket_size(i) << " elements.\n";
+	}
+
+	cout << "The third unordered_map has " << m3.bucket_count() << " buckets!\n";
+	for(size_t i = 0; i < m3.bucket_count(); i++){
+		cout << "Bucket #" << i << " has " << m3.bucket_size(i) << " elements.\n";
 	}
 
 	return 0;
 }
+
+/* Output:
+snepsts@michael-laptop:~/classwork/CS300/lab13$ ./lab13.out < shortstory.txt
+The first unordered_map has 199 buckets!
+Bucket #0 has 1 elements.
+Bucket #1 has 0 elements.
+Bucket #2 has 0 elements.
+Bucket #3 has 1 elements.
+Bucket #4 has 0 elements.
+Bucket #5 has 0 elements.
+Bucket #6 has 1 elements.
+Bucket #7 has 0 elements.
+Bucket #8 has 1 elements.
+[...]
+Bucket #190 has 1 elements.
+Bucket #191 has 0 elements.
+Bucket #192 has 0 elements.
+Bucket #193 has 0 elements.
+Bucket #194 has 0 elements.
+Bucket #195 has 0 elements.
+Bucket #196 has 0 elements.
+Bucket #197 has 0 elements.
+Bucket #198 has 0 elements.
+The second unordered_map has 199 buckets!
+Bucket #0 has 0 elements.
+Bucket #1 has 103 elements.
+Bucket #2 has 0 elements.
+Bucket #3 has 0 elements.
+Bucket #4 has 0 elements.
+Bucket #5 has 0 elements.
+Bucket #6 has 0 elements.
+Bucket #7 has 0 elements.
+Bucket #8 has 0 elements.
+[...]
+Bucket #190 has 0 elements.
+Bucket #191 has 0 elements.
+Bucket #192 has 0 elements.
+Bucket #193 has 0 elements.
+Bucket #194 has 0 elements.
+Bucket #195 has 0 elements.
+Bucket #196 has 0 elements.
+Bucket #197 has 0 elements.
+Bucket #198 has 0 elements.
+The third unordered_map has 199 buckets!
+Bucket #0 has 1 elements.
+Bucket #1 has 2 elements.
+Bucket #2 has 0 elements.
+Bucket #3 has 0 elements.
+Bucket #4 has 0 elements.
+Bucket #5 has 1 elements.
+Bucket #6 has 0 elements.
+Bucket #7 has 0 elements.
+Bucket #8 has 0 elements.
+[...]
+Bucket #190 has 3 elements.
+Bucket #191 has 1 elements.
+Bucket #192 has 0 elements.
+Bucket #193 has 1 elements.
+Bucket #194 has 0 elements.
+Bucket #195 has 0 elements.
+Bucket #196 has 1 elements.
+Bucket #197 has 1 elements.
+Bucket #198 has 1 elements.
+*/

@@ -1,0 +1,48 @@
+# =======================================================
+# Script Name:	phoneadd
+# By:			Your initials here
+# Date:		Today’s date
+# Purpose:		A shell script that sets up a loop to add
+# 			new employees to the corp_phones file.
+# Command Line:	phoneadd
+#
+# =======================================================
+trap "rm ~/tmp/* 2> /dev/null; exit" 0 1 2 3
+phonefile=~/source/corp_phones
+looptest=y
+while [ $looptest = y ]
+do
+	clear
+	tput cup 1 4; echo "Corporate Phone List Additions"
+	tput cup 2 4; echo "=============================="
+	tput cup 4 4; echo "Phone Number: "
+	tput cup 5 4; echo "Last Name : "
+	tput cup 6 4; echo "First Name : "
+	tput cup 7 4; echo "Middle Init : "
+	tput cup 8 4; echo "Dept # : "
+	tput cup 9 4; echo "Job Title : "
+	tput cup 10 4; echo "Date Hired : "
+	tput cup 12 4; echo "Add Another? (y)es or (q)uit: "
+	tput cup 4 18; read phonenum
+	if [ "$phonenum" = "q" ]
+	then
+		clear; exit
+	fi
+	tput cup 5 18; read lname
+	tput cup 6 18; read fname
+	tput cup 7 18; read midinit
+	tput cup 8 18; read deptno
+	tput cup 9 18; read jobtitle
+	tput cup 10 18; read datehired
+	# Check to see if last name is not a blank before you
+	# write to disk
+	if [ "$lname" > "		" ]
+	then
+		echo "$phonenum:$lname:$fname:$midinit:$deptno:$jobtitle:$datehired" >> $phonefile
+	fi
+	tput cup 12 33; read looptest
+	if [ "$looptest" = "q" ]
+	then
+		clear; exit
+	fi
+done

@@ -1,0 +1,4 @@
+./lab16.out
+neato -Tpng usagraph.gv -o usagraph.png
+dot -Tpng stategraph.gv -o stategraph.png
+neato -Tpng sgbgraph.gv -o sgbgraph.png

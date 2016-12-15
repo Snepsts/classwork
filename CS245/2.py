@@ -21,8 +21,8 @@ def fib2(n):
 if __name__ == '__main__':
 	n = 100
 	#print('n = ', fact(n))
-	print('n = ', fib(n)) #takes forever
-	#print('n = ', fib2(n)) #much faster
+	#print('n = ', fib(n)) #takes forever
+	print('n = ', fib2(n)) #much faster
 
 '''
 or we can do this

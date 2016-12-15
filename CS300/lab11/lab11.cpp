@@ -1,3 +1,8 @@
+/* Author: Michael Ranciglio
+School: Southeast Missouri State
+Class: Computer Science III
+Date: 10/24/16 */
+
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -69,3 +74,22 @@ void stringtolower(string& word){
 	for(unsigned i = 0; i < word.length(); i++)
 		word[i] = tolower(word[i]);
 }
+
+/* Output:
+snepsts@michael-laptop:~/classwork/CS300/lab11$ ./lab11.out < shortstory.txt
+a
+a
+a
+a
+a
+a
+[...]
+mistaking
+absolutely
+comprehend
+understand
+discernible
+intelligence
+If you see this then the Queue works
+If you see this then the Stack works
+*/
