@@ -39,7 +39,9 @@ int main(int argc, char* argv[]){
 	for(size_t i = 0; i < count; i++){
 		for (size_t j = 0; j < 3; j++){
 			for (size_t t = 0; t < 5; t++){
-				c = std::to_string(dr(dre));
+				int x = dr(dre);
+				c = std::to_string(x);
+				std::cout << x << '\n';
 				number += c;
 			}
 			//std::cout << number << '\n';
