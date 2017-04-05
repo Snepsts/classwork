@@ -68,5 +68,6 @@ public class Driver
 		CreditCardPayment ccp2 = new CreditCardPayment(month, year, name, number);
 		ccp2.setPayment(payment);
 
+		ccp2.paymentDetails();
 	}
 }
