@@ -33,7 +33,7 @@ const char *byte_to_binary_u(unsigned x) {
 	return c;
 }
 
-const char *reverseBits(unsigned x){
+const char *reverseBits(unsigned x) {
 	const char *c = byte_to_binary_u(x);
 	static char rc[33];
 
