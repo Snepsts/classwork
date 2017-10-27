@@ -10,7 +10,8 @@ the bits are reversed properly.*/
 const char *byte_to_binary_u(unsigned x);
 const char *reverseBits(unsigned x);
 
-int main(){
+int main()
+{
 	unsigned bitNum;
 	printf("Please enter a number lower than or equal to 4,294,967,295: ");
 	scanf("%u", &bitNum);
@@ -21,11 +22,11 @@ int main(){
 	return 0;
 }
 
-const char *byte_to_binary_u(unsigned x){
+const char *byte_to_binary_u(unsigned x) {
 	static char c[33];
 	c[0] = '\0';
 
-	for(unsigned i = 2147483648; i > 0; i >>= 1){ //2147483648 allows us to see up to 32 bits
+	for(unsigned i = 2147483648; i > 0; i >>= 1) { //2147483648 allows us to see up to 32 bits
 		strcat(c, ((x & i) == i) ? "1" : "0");
 	}
 
@@ -35,10 +36,14 @@ const char *byte_to_binary_u(unsigned x){
 const char *reverseBits(unsigned x){
 	const char *c = byte_to_binary_u(x);
 	static char rc[33];
+
 	rc[0] = '\0';
-	for (size_t i = 32; i > 0; i--){
+
+	for (size_t i = 31; i > 0; i--) {
 		strcat(rc, (c[i] == '1') ? "1" : "0");
 	}
+
+	strcat(rc, (c[0] == '1') ? "1" : "0");
 
 	return rc;
 }
@@ -48,5 +53,5 @@ Please enter a number lower than or equal to 4,294,967,295: 3412468323
 This is the binary representation of your number:
 11001011011001100010001001100011
 This is the binary representation of your number in reverse:
-01100011001000100011001101101001
+11000110010001000110011011010011
 */
