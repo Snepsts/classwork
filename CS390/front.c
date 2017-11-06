@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 //global variables
 //variables
@@ -32,6 +33,14 @@ int lex();
 #define DIV_OP 24
 #define LEFT_PAREN 25
 #define RIGHT_PAREN 26
+#define FOR 30
+#define IF 31
+#define ELSE 32
+#define WHILE 33
+#define DO 34
+#define INT 35
+#define FLOAT 36
+#define SWITCH 37
 
 int main()
 {
@@ -137,6 +146,33 @@ int lex()
 				add_char();
 				get_char();
 			}
+
+			if (strcmp(lexeme, "for") == 0) {
+				next_token = FOR;
+				break;
+			} else if (strcmp(lexeme, "if") == 0) {
+				next_token = IF;
+				break;
+			} else if (strcmp(lexeme, "else") == 0) {
+				next_token = ELSE;
+				break;
+			} else if (strcmp(lexeme, "while") == 0) {
+				next_token = WHILE;
+				break;
+			} else if (strcmp(lexeme, "do") == 0) {
+				next_token = DO;
+				break;
+			} else if (strcmp(lexeme, "int") == 0) {
+				next_token = INT;
+				break;
+			} else if (strcmp(lexeme, "float") == 0) {
+				next_token = FLOAT;
+				break;
+			} else if (strcmp(lexeme, "switch") == 0) {
+				next_token = SWITCH;
+				break;
+			}
+
 			next_token = IDENT;
 			break;
 		case DIGIT: //parse integer literals
