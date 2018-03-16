@@ -21,24 +21,42 @@ with a range of (1,6) and have it generate five numbers
 
 string getstr(string s);
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[])
+{
+	bool set_count = false;
+	bool set_length = false;
 	string number, word, c;
 	std::vector<string> v;
 	std::default_random_engine dre;
 	dre.seed(time(nullptr));
 	std::uniform_int_distribution<int> dr(1, 6);
-	int count;
+	size_t count;
+	size_t length;
 
-	if(argc > 1)
+	if (argc > 2) {
 		count = std::stoi(argv[1]);
-	else{
+		length = std::stoi(argv[2]);
+	} else if (argc > 1) {
+		count = std::stoi(argv[1]);
+		set_length = true;
+	} else {
+		set_count = true;
+		set_length = true;
+	}
+
+	if (set_count) {
 		std::cout << "How many runs would you like?\n";
 		std::cin >> count;
 	}
 
-	for(size_t i = 0; i < count; i++){
-		for (size_t j = 0; j < 3; j++){
-			for (size_t t = 0; t < 5; t++){
+	if (set_length) {
+		std::cout << "How many words per run would you like?\n";
+		std::cin >> length;
+	}
+
+	for (size_t i = 0; i < count; i++) {
+		for (size_t j = 0; j < length; j++) {
+			for (size_t t = 0; t < 5; t++) {
 				int x = dr(dre);
 				c = std::to_string(x);
 				std::cout << x << '\n';
